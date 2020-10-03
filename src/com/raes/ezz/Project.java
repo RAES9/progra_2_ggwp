@@ -1,5 +1,4 @@
 package com.raes.ezz;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,26 +99,18 @@ public class Project extends JFrame{
 class ChangeColor extends AbstractAction {
     Component parentComponent;
     private Color current;
-
     public ChangeColor(Component parentComponent) {
         super("Change color background");
         this.parentComponent = parentComponent;
     }
-
     public void actionPerformed(ActionEvent actionEvent) {
-        addColorChangedListener(new ColorChangedListener() {
-            @Override
-            public void colorChanged(Color newColor) {
-                parentComponent.setBackground(current);
-            }});
+        addColorChangedListener(newColor -> parentComponent.setBackground(current));
         Color newColor = JColorChooser.showDialog(null, "Choose a color", current);
         setSelectedColor(newColor);
     }
-
     public void setSelectedColor(Color newColor) {
         setSelectedColor(newColor, true);
     }
-
     public void setSelectedColor(Color newColor, boolean notify) {
         if (newColor == null) return;
         current = newColor;
@@ -129,13 +120,10 @@ class ChangeColor extends AbstractAction {
             }
         }
     }
-
     public interface ColorChangedListener {
         void colorChanged(Color newColor);
     }
-
-    private List<ColorChangedListener> listeners = new ArrayList<ColorChangedListener>();
-
+    private final List<ColorChangedListener> listeners = new ArrayList<>();
     public void addColorChangedListener(ColorChangedListener toAdd) {
         listeners.add(toAdd);
     }
@@ -143,12 +131,10 @@ class ChangeColor extends AbstractAction {
 
 class ChangeTitle extends AbstractAction {
     JFrame parentComponent;
-
     public ChangeTitle(JFrame parentComponent) {
         super("Change title");
         this.parentComponent = parentComponent;
     }
-
     public void actionPerformed(ActionEvent actionEvent) {
         String title = JOptionPane.showInputDialog("Please input your custom title");
         parentComponent.setTitle(title);
