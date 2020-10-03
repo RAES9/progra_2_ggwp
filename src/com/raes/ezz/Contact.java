@@ -1,6 +1,7 @@
 package com.raes.ezz;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Contact extends JFrame{
     private JPanel frame;
@@ -15,5 +16,6 @@ public class Contact extends JFrame{
     public Contact(){
         setBounds(0,0,600,300);
         add(frame);
+        
     }
 }

@@ -3,7 +3,7 @@ package com.raes.ezz;
 public class Main {
 
     public static void main(String[] args) {
-        createContactForm();
+        createProductsForm();
     }
 
     private static void createProject(){
@@ -44,6 +44,12 @@ public class Main {
     private static void createContactForm(){
         //Bring my form
         Contact f = new Contact();
+        f.setVisible(true);
+    }
+
+    private static void createProductsForm(){
+        //Bring my form
+        Project f = new Project();
         f.setVisible(true);
     }
 }
